@@ -1,0 +1,180 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+  overflow-x: hidden; /* Evita a barra de rolagem horizontal */
+}
+
+.header {
+  position: fixed;
+  display: flex;
+  top: 0;
+  z-index: 1;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #000;
+  border-bottom: 2px solid #FF008E;
+}
+
+.logo img {
+  padding: 20px 20px;
+  height: 100px;
+}
+
+.nav {
+  padding: 20px 20px;
+}
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav li {
+  margin-left: 20px;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Estilos do Carrossel */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 70vh; /* Altura do carrossel */
+  overflow: hidden;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+.slide-content {
+  text-align: left;
+  margin-left: 1%;
+  margin-top: 1%;
+  position: absolute;
+  left: 70%;
+  color: #fff;
+  width: 30%;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  background-color: #000;
+}
+.slide-content-bg {
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  width: 70%;
+  height: 100%;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.slide-content h1 {
+  padding-right: 40px;
+  font-size: 4em;
+  margin: 0;
+  margin-bottom: 50px;
+}
+
+.slide-content p {
+  padding-right: 40px;
+  text-align: justify;
+  font-size: 1.5em;
+  margin: 0;
+  margin-bottom: 50px;
+}
+.slide-content button {
+  padding: 10px;
+  background-color: transparent;
+  font-size: 2em;
+  border-color: white;
+  color: white;
+  border-radius: 5%;
+  border-width: 5px;
+}
+
+.carousel-nav {
+  position: absolute;
+  bottom: 5%;
+  left: 75%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.carousel-nav-dot {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.carousel-nav-dot.active {
+  background-color: #fff;
+  width: 60px;
+  border-radius: 40%;
+}
+
+/* Estilos do restante do site */
+.main-content {
+  margin-top: 100px;
+  padding: 50px;
+  text-align: center;
+}
+
+.games-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.game-card {
+  background-color: #111;
+  padding: 20px;
+  border: 1px solid #333;
+  text-align: center;
+}
+
+.game-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px 50px;
+  background-color: #000;
+  border-top: 1px solid #333;
+  margin-top: 50px;
+}
+.brand {
+  font-size: 3em;
+  margin: 0;
+  padding: 20px 20px;
+}
+
+* {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
