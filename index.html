@@ -1,102 +1,233 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Team Tomuri – Jogos indies brasileiros com o juice nipônico</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@500;900&display=swap">
+<style>
+:root{--bg:#fdf7f4;--bg2:#f8e9ee;--card:#fff;--tx:#23301b;--mut:#66705e;--g:#4c8a1e;--p:#d9467a;--on:#fff;--bd:#ecd5dc;
+--hd:"Zen Maru Gothic","Hiragino Maru Gothic ProN",system-ui,sans-serif;--jp:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1710;--bg2:#17231a;--card:#1d2b20;--tx:#f2f7ec;--mut:#a3b39a;--g:#9bd84a;--p:#ff8fb1;--on:#10200a;--bd:#2f4333;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1710;--bg2:#17231a;--card:#1d2b20;--tx:#f2f7ec;--mut:#a3b39a;--g:#9bd84a;--p:#ff8fb1;--on:#10200a;--bd:#2f4333;color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));height:100%}
+body{background:var(--bg);color:var(--tx);font:16px/1.65 var(--hd)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+section{padding:80px 0}
+.alt{background:var(--bg2)}
+h1,h2,h3{line-height:1.12;font-weight:900}
+h1{font-size:clamp(2.3rem,7vw,4.6rem)}
+h2{font-size:clamp(1.8rem,4.5vw,2.9rem);margin-bottom:14px}
+.eyebrow{font:900 .78rem var(--jp);letter-spacing:.2em;text-transform:uppercase;color:var(--p);display:block;margin-bottom:12px}
+.lead{color:var(--mut);max-width:620px;margin-bottom:36px}
+.grad{background:linear-gradient(90deg,var(--g),var(--p));-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-block;padding:13px 28px;border-radius:999px;font:700 1rem var(--hd);border:2px solid var(--g);background:var(--g);color:var(--on);cursor:pointer;transition:transform .2s}
+.btn:hover{transform:translateY(-3px) rotate(-1deg)}
+.btn.ghost{background:transparent;color:var(--tx);border-color:var(--p)}
+/* kana separator */
+.sep{display:flex;align-items:center;justify-content:center;gap:18px;padding:26px 0;font:900 1.6rem var(--jp);background:var(--bg)}
+.sep::before,.sep::after{content:"";height:2px;flex:1;max-width:260px;background:linear-gradient(90deg,transparent,var(--bd))}
+.sep::after{transform:scaleX(-1)}
+.sep span:nth-child(1){color:var(--g)}.sep span:nth-child(2){color:var(--p)}.sep span:nth-child(3){color:var(--g)}
+/* nav */
+header{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:8px;font:900 1.2rem var(--hd)}
+.logo svg{width:44px;height:32px}
+.logo b{color:var(--g)}
+.links{display:flex;gap:22px;align-items:center;font-size:.92rem;font-weight:700}
+.links a:hover{color:var(--p)}
+#tt,#burger{background:none;border:1px solid var(--bd);color:var(--tx);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:1rem}
+#burger{display:none}
+/* hero */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:110px;position:relative;overflow:hidden;background:radial-gradient(circle at 80% 30%,color-mix(in srgb,var(--p) 22%,transparent),transparent 55%),radial-gradient(circle at 10% 90%,color-mix(in srgb,var(--g) 20%,transparent),transparent 50%)}
+#cv{position:absolute;inset:0;width:100%;height:100%}
+#hero .wrap{position:relative;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center}
+#hero p{color:var(--mut);margin:20px 0 30px;max-width:520px;font-size:1.1rem}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.mascot{width:100%;max-width:400px;justify-self:center;animation:fl 5s ease-in-out infinite;filter:drop-shadow(0 18px 30px rgba(217,70,122,.3))}
+@keyframes fl{50%{transform:translateY(-14px) rotate(2deg)}}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:22px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(217,70,122,.18)}
+.thumb{height:150px;display:grid;place-items:center;font-size:3.3rem}
+.card .in{padding:20px}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;padding:4px 12px;border-radius:999px;background:var(--bg2);color:var(--p);margin-bottom:10px}
+.card p{color:var(--mut);font-size:.92rem}
+.plat{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.plat span{font-size:.72rem;border:1px solid var(--bd);border-radius:6px;padding:2px 8px;color:var(--mut)}
+/* featured */
+.feat{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.shot{aspect-ratio:16/10;border-radius:24px;background:linear-gradient(135deg,#9bd84a,#4c8a1e 50%,#ff8fb1);display:grid;place-items:center;font-size:5rem;box-shadow:0 20px 50px rgba(76,138,30,.3)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 12px}
+.tabs button{padding:8px 16px;border-radius:999px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer;font:700 .9rem var(--hd)}
+.tabs button.on{background:var(--p);color:#fff;border-color:var(--p)}
+#tabtxt{color:var(--mut);min-height:90px}
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.about q{display:block;font:900 1.35rem/1.4 var(--hd);margin-bottom:22px;quotes:"“" "”"}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.facts div{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px}
+.facts small{display:block;color:var(--p);font:900 .7rem var(--jp);letter-spacing:.12em}
+.tl{border-left:3px solid var(--g);margin-left:8px;padding-left:28px;display:grid;gap:26px}
+.tl div{position:relative}
+.tl div::before{content:"";position:absolute;left:-37px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--p);border:3px solid var(--bg)}
+.tl b{color:var(--g)}
+.av{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;font-size:2.2rem;margin-bottom:14px;background:linear-gradient(135deg,var(--g),var(--p))}
+.role{color:var(--g);font-size:.85rem;font-weight:700;margin-bottom:8px}
+.partners{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.partners span{border:2px dashed var(--bd);border-radius:14px;padding:12px 22px;color:var(--mut);font-weight:700}
+form{display:grid;gap:14px;max-width:560px}
+input,textarea,select{width:100%;padding:13px 16px;border-radius:14px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--p)}
+#msg{color:var(--p);font-weight:700;min-height:24px}
+footer{padding:36px 0;border-top:1px solid var(--bd);color:var(--mut);font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center}
+footer .logo{color:var(--tx)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+@media(max-width:800px){
+section{padding:60px 0}
+.feat,.about,#hero .wrap{grid-template-columns:1fr}
+.mascot{max-width:220px;order:-1}
+#burger{display:block}
+.links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px;border-bottom:1px solid var(--bd)}
+.links.open{display:flex}
+}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.mascot{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<g id="tor"><path fill-rule="evenodd" style="fill:var(--p)" d="M13 60L13 73L21 90L52 129L78 132L82 135L84 156L175 156L176 162L170 177L185 178L180 194L140 194L137 199L134 212L79 205L62 209L58 211L54 242L54 255L57 265L178 266L157 545L155 547L149 546L139 549L132 558L125 585L125 612L144 618L188 623L237 624L252 621L252 566L249 559L240 550L227 541L231 267L234 265L298 265L338 267L455 267L495 265L561 266L563 315L566 541L553 550L544 559L541 566L541 621L556 624L605 623L649 618L668 612L668 585L661 558L654 549L644 546L638 547L636 545L615 266L736 265L739 255L735 211L726 207L714 205L659 212L658 205L653 194L613 194L608 178L623 177L617 162L618 156L709 156L711 135L715 132L741 129L775 85L780 73L780 60L722 86L667 102L439 107L357 107L126 102L74 87ZM416 161L543 161L544 178L557 178L558 190L517 191L514 203L512 205L420 205L418 198ZM377 161L375 198L373 205L281 205L279 203L276 191L235 190L236 178L249 178L250 161Z"/></g>
+<g id="kiwi"><circle cx="396" cy="430" r="137" fill="#a9dc57"/><path fill-rule="evenodd" fill="#a67c3f" d="M379 282L355 287L330 297L308 311L285 333L269 356L257 383L251 409L250 443L255 471L263 493L279 520L300 543L329 563L353 573L382 579L410 579L440 573L466 562L493 543L511 524L525 503L538 471L543 443L543 418L536 383L524 356L508 333L490 315L461 296L438 287L415 282ZM380 298L401 297L432 302L453 310L479 327L497 345L509 362L518 380L523 395L527 417L527 444L522 469L510 497L500 512L481 532L458 548L434 558L409 563L384 563L359 558L337 549L312 532L293 512L283 497L271 469L266 444L266 416L270 395L279 371L292 350L314 327L331 315L352 305Z"/><path fill-rule="evenodd" fill="#eaf7c0" d="M396 331L390 344L384 368L381 371L375 369L352 346L348 344L346 345L347 356L354 379L354 386L352 388L346 388L318 380L310 381L314 388L336 410L337 415L328 420L303 426L297 431L302 434L326 440L337 445L335 452L312 475L310 479L312 481L316 481L344 473L352 473L354 475L354 482L346 509L347 516L350 516L369 497L380 489L385 495L393 526L395 529L398 529L402 520L407 498L411 490L416 490L443 516L446 516L447 509L439 482L439 475L441 473L449 473L477 481L481 481L483 479L481 475L458 452L456 445L467 440L491 434L496 430L490 426L465 420L456 415L457 410L482 384L482 380L470 381L447 388L441 388L439 386L439 379L447 351L446 344L441 346L418 369L412 371L409 368L400 335Z"/><path fill-rule="evenodd" fill="#2b3d1f" d="M376 508L369 512L361 520L361 533L363 539L370 536L379 526L378 513ZM417 507L412 519L412 527L416 533L424 540L427 535L430 522L426 515ZM339 487L329 489L320 494L316 512L325 511L335 506L339 493ZM452 485L452 493L456 503L469 509L475 509L475 503L471 492L465 488ZM472 451L473 454L485 465L496 464L504 461L503 458L491 447L478 448ZM287 461L305 465L309 463L318 454L319 451L309 447L300 447L288 458ZM285 404L288 409L299 416L312 413L318 409L311 402L304 398L298 398ZM472 410L480 414L491 415L503 405L504 401L492 397L485 397ZM313 352L314 359L321 370L328 372L340 372L338 364L331 354ZM475 349L462 352L456 356L452 374L463 372L472 366L475 356ZM364 321L362 326L361 339L369 348L377 352L379 344L379 333L375 328ZM426 320L423 321L412 333L412 342L416 352L421 349L430 338L429 328Z"/></g>
+<g id="txt"><path fill-rule="evenodd" style="fill:var(--tx)" d="M743 643L743 733L779 733L779 643ZM592 643L592 732L628 732L628 709L647 708L666 733L706 733L698 723L698 710L708 703L708 697L701 697L694 702L692 701L704 687L707 673L703 662L691 648L681 643ZM685 706L687 706ZM686 705L689 705ZM688 704L690 704ZM689 703L692 703ZM691 702L693 702ZM707 699L707 702L697 709L697 730L694 733L690 731L690 714L677 722L672 721L672 717L701 698ZM628 666L665 665L671 670L672 678L671 681L667 684L629 684ZM452 643L452 698L458 710L470 722L488 731L510 733L525 729L540 720L550 709L556 695L556 643L520 644L519 691L515 699L505 705L499 704L494 701L488 690L487 643ZM285 643L285 732L318 733L319 685L350 722L381 685L382 704L380 705L380 719L382 721L382 733L404 734L415 732L415 643L376 643L350 678L324 643ZM393 698L402 698L403 706L415 707L415 721L403 733L394 733L393 730L404 719L404 712L392 712L391 718L381 717L381 707L392 706ZM210 645L202 643L182 644L169 650L159 659L152 671L149 683L149 693L153 706L151 711L158 715L151 716L148 722L153 724L163 722L166 732L171 734L175 729L188 733L201 733L216 728L231 715L239 697L240 688L238 675L233 664L227 656ZM163 699L167 700L169 704L176 702L180 704L178 708L170 710L171 714L183 713L185 715L185 717L182 719L172 720L174 729L171 733L166 730L164 721L156 723L150 721L152 717L163 716L162 711L156 713L153 711L154 707L161 706ZM191 672L201 673L208 679L210 683L209 695L205 700L197 704L191 704L185 701L181 697L178 689L181 679L186 674ZM14 643L14 666L41 667L41 733L77 733L77 667L104 666L104 643Z"/></g>
+<symbol id="mark" viewBox="8 56 778 570"><use href="#tor"/><use href="#kiwi"/></symbol>
+<symbol id="logo" viewBox="8 56 778 684"><use href="#tor"/><use href="#kiwi"/><use href="#txt"/></symbol>
+</svg>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato&family=Orbitron&family=Original+Surfer&family=Pixelify+Sans:wght@400..700&display=swap"
-      rel="stylesheet"
-    />
+<header><div class="wrap"><nav>
+<a href="#hero" class="logo"><svg><use href="#mark"/></svg>Team <b>Tomuri</b></a>
+<div class="links" id="links">
+<a href="#destaque">Destaque</a><a href="#jogos">Jogos</a><a href="#sobre">Sobre</a><a href="#time">Time</a><a href="#servicos">Serviços</a><a href="#contato">Contato</a>
+<button id="tt" aria-label="Alternar tema">◐</button>
+</div>
+<button id="burger" aria-label="Menu">☰</button>
+</nav></div></header>
 
-    <link rel="icon" type="image/x-icon" href="src/icon.png" />
-    <title>Actually Games</title>
-  </head>
-  <body>
-    <header class="header">
-      <div class="logo">
-        <img src="src/icon.png" alt="Logo" />
-      </div>
-      <span class="brand">Weverton Leal</span>
-      <nav class="nav">
-        <ul>
-          <li><a href="#">Jogos</a></li>
-          <li><a href="#">Jams</a></li>
-          <li><a href="#">Contato</a></li>
-          <li><a href="#">Sobre</a></li>
-        </ul>
-      </nav>
-    </header>
-  <iframe frameborder="0" src="https://itch.io/embed-upload/14540634?color=02072b" allowfullscreen="" width="960" height="560"><a href="https://wevleal.itch.io/wheeloop">Play Wheeloop on itch.io</a></iframe>
-    <main class="main-content">
-      <iframe frameborder="0" src="https://itch.io/embed-upload/14540634?color=02072b" allowfullscreen="" width="960" height="560"><a href="https://wevleal.itch.io/wheeloop">Play Wheeloop on itch.io</a></iframe>
-      <div class="carousel-container">
-        <div class="carousel-slide active">
-          <div class="slide-content">
-            <h1>TTT</h1>
-            <p>Um jogo narrativo em uma padaria muito boa.</p>
-            <button>Jogue Agora</button>
-          </div>
-          <div
-            class="slide-content-bg"
-            style="background-image: url('src/ttt.png')"
-          ></div>
-        </div>
-        <div class="carousel-slide">
-          <div class="slide-content">
-            <h1>TTT</h1>
-            <p>Um jogo narrativo em uma padaria muito boa Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et esse minima eum reprehenderit similique incidunt quo illo, recusandae, alias natus eaque nemo, vitae voluptatem. Accusamus, eos pariatur? Tempore, enim placeat..</p>
-            <button>Jogue Agora</button>
-          </div>
-          <div
-            class="slide-content-bg"
-            style="background-image: url('src/placeholder.png')"
-          ></div>
-        </div>
-        <div class="carousel-slide">
-          <div class="slide-content">
-            <h1>TTT</h1>
-            <p>Um jogo narrativo em uma padaria muito boa.</p>
-            <button>Jogue Agora</button>
-          </div>
-          <div
-            class="slide-content-bg"
-            style="background-image: url('src/placeholder.png')"
-          ></div>
-        </div>
-        <div class="carousel-nav">
-          <span class="carousel-nav-dot active"></span>
-          <span class="carousel-nav-dot"></span>
-          <span class="carousel-nav-dot"></span>
-        </div>
-      </div>
+<main>
+<section id="hero"><canvas id="cv"></canvas><div class="wrap">
+<div><span class="eyebrow">Brasil · Indie · キウイ</span>
+<h1>Jogos indies brasileiros<br><span class="grad">com o juice nipônico.</span> 🥝</h1>
+<p>A Team Tomuri é um estúdio indie que mistura a alma do Brasil com a estética e o capricho do Japão, criando jogos cheios de personalidade.</p>
+<div class="cta"><a class="btn" href="#jogos">Ver nossos jogos</a><a class="btn ghost" href="#contato">Fale conosco</a></div></div>
+<svg class="mascot" viewBox="8 56 778 684" role="img" aria-label="Logo Team Tomuri: kiwi dentro de um torii"><use href="#logo"/></svg>
+</div></section>
 
-      <section>
-        <h2>Nossos Jogos</h2>
-        <div class="games-list">
-          <div class="game-card">
-            <img src="src/placeholder.png" alt="Jogo 1" />
-            <h3>Nome do Jogo 1</h3>
-          </div>
-          <div class="game-card">
-            <img src="src/placeholder.png" alt="Jogo 2" />
-            <h3>Nome do Jogo 2</h3>
-          </div>
-          <div class="game-card">
-            <img src="src/placeholder.png" alt="Jogo 3" />
-            <h3>Nome do Jogo 3</h3>
-          </div>
-        </div>
-      </section>
-    </main>
+<div class="sep" aria-hidden="true"><span>キ</span><span>ウ</span><span>イ</span></div>
 
-    <footer class="footer">
-      <p>&copy; 2025 Weverton Leal. Todos os direitos reservados.</p>
-    </footer>
+<section id="destaque" class="alt"><div class="wrap feat">
+<div class="rv"><span class="eyebrow">Primeiro projeto</span><h2>Nome do Jogo 1</h2>
+<p class="lead" style="margin-bottom:0">Escreva aqui a sinopse principal: o mundo, o conflito e a promessa para o jogador.</p>
+<div class="tabs" id="tabs"></div><p id="tabtxt"></p>
+<div class="cta" style="margin-top:18px"><a class="btn" href="#">Adicionar à lista de desejos</a><a class="btn ghost" href="#">Assistir ao trailer</a></div></div>
+<div class="shot rv">🥝</div>
+</div></section>
 
-    <script src="script.js"></script>
-  </body>
+<div class="sep" aria-hidden="true"><span>キ</span><span>ウ</span><span>イ</span></div>
+
+<section id="jogos"><div class="wrap">
+<span class="eyebrow">Nossos jogos</span><h2>Mundos com <span class="grad">sabor de kiwi</span></h2>
+<p class="lead">Cada projeto é feito à mão, com a energia brasileira e a delicadeza japonesa.</p>
+<div class="grid">
+<article class="card rv"><div class="thumb" style="background:linear-gradient(135deg,#9bd84a,#4c8a1e)">🥝</div><div class="in"><span class="tag">Lançamento: 2027</span><h3>Nome do Jogo 1</h3><p>Gênero · Jogadores. Descreva em uma ou duas frases o que torna este jogo único.</p><div class="plat"><span>PC</span><span>Switch</span></div></div></article>
+<article class="card rv"><div class="thumb" style="background:linear-gradient(135deg,#ffb3cc,#d9467a)">🌸</div><div class="in"><span class="tag">Em desenvolvimento</span><h3>Nome do Jogo 2</h3><p>Uma nova IP em pré-produção. Conte aqui a ideia central e o clima do jogo.</p><div class="plat"><span>PC</span></div></div></article>
+<article class="card rv"><div class="thumb" style="background:linear-gradient(135deg,#2b3a2a,#6b8f4e)">⛩️</div><div class="in"><span class="tag">Protótipo</span><h3>Nome do Jogo 3</h3><p>Um experimento que une folclore brasileiro e mitologia japonesa.</p><div class="plat"><span>PC</span></div></div></article>
+<article class="card rv"><div class="thumb" style="background:linear-gradient(135deg,#ffd6e3,#a9dc57)">🎋</div><div class="in"><span class="tag">Conceito</span><h3>Nome do Jogo 4</h3><p>Em breve. Acompanhe nossas redes para novidades.</p><div class="plat"><span>A definir</span></div></div></article>
+</div></div></section>
+
+<div class="sep" aria-hidden="true"><span>キ</span><span>ウ</span><span>イ</span></div>
+
+<section id="sobre" class="alt"><div class="wrap about">
+<div class="rv"><span class="eyebrow">Sobre o estúdio</span><h2>Um kiwi no <span class="grad">país do sol nascente</span></h2>
+<q>Do Brasil para o mundo, passando pelo Japão.</q>
+<p class="lead">Nosso logo é um kiwi aberto dentro de um torii: a fruta que carrega nosso suco criativo, atravessando o portal que nos inspira. Contem aqui a história de vocês.</p>
+<div class="facts"><div><small>FUNDAÇÃO</small>Ano · Cidade, Brasil</div><div><small>TIME</small>00 pessoas</div><div><small>INSPIRAÇÃO</small>Japão + Brasil</div><div><small>LEMA</small>Juice nipônico 🥝</div></div></div>
+<div class="rv"><span class="eyebrow">Linha do tempo</span><div class="tl">
+<div><b>Ano 1</b><h3>Nasce a Team Tomuri</h3><p class="lead" style="margin:0">A ideia, a primeira equipe e o primeiro protótipo.</p></div>
+<div><b>Ano 2</b><h3>Primeiros eventos</h3><p class="lead" style="margin:0">Demos, feiras e feedback dos jogadores.</p></div>
+<div><b>Ano 3</b><h3>Primeiro lançamento</h3><p class="lead" style="margin:0">O kiwi chega às lojas.</p></div>
+<div><b>Próximo</b><h3>O futuro</h3><p class="lead" style="margin:0">Novas IPs e novas plataformas.</p></div>
+</div></div></div></section>
+
+<div class="sep" aria-hidden="true"><span>キ</span><span>ウ</span><span>イ</span></div>
+
+<section id="time"><div class="wrap">
+<span class="eyebrow">As pessoas</span><h2>Feitos por quem ama jogos</h2>
+<p class="lead">Um time pequeno, apaixonado e com muito suco criativo.</p>
+<div class="grid">
+<div class="card rv"><div class="in"><div class="av">🧑‍🎨</div><h3>Nome Sobrenome</h3><div class="role">Fundador(a) · Direção criativa</div><p>Uma breve bio sobre quem lidera a visão do estúdio.</p></div></div>
+<div class="card rv"><div class="in"><div class="av">🧑‍💻</div><h3>Nome Sobrenome</h3><div class="role">Programação</div><p>Uma breve bio sobre quem constrói a tecnologia por trás dos jogos.</p></div></div>
+<div class="card rv"><div class="in"><div class="av">🎵</div><h3>Nome Sobrenome</h3><div class="role">Arte e áudio</div><p>Uma breve bio sobre quem dá cor e som ao mundo do kiwi.</p></div></div>
+</div>
+<div class="partners"><span>Parceiro 1</span><span>Publisher</span><span>Evento / Feira</span><span>Universidade</span></div>
+</div></section>
+
+<div class="sep" aria-hidden="true"><span>キ</span><span>ウ</span><span>イ</span></div>
+
+<section id="servicos" class="alt"><div class="wrap">
+<span class="eyebrow">O que fazemos</span><h2>Além de jogos, <span class="grad">fazemos parcerias</span></h2>
+<p class="lead">Também colaboramos com outros estúdios e marcas.</p>
+<div class="grid">
+<div class="card rv"><div class="thumb" style="background:var(--bg2)">💡</div><div class="in"><h3>Desenvolvimento de IP</h3><p>Do conceito ao mundo completo: pilares de design, mecânicas e universo.</p></div></div>
+<div class="card rv"><div class="thumb" style="background:var(--bg2)">🎨</div><div class="in"><h3>Arte e animação</h3><p>Arte 2D, pixel art, animação e UI com estética inspirada no Japão.</p></div></div>
+<div class="card rv"><div class="thumb" style="background:var(--bg2)">🧪</div><div class="in"><h3>Protótipo e consultoria</h3><p>Da ideia a uma build jogável, pronta para mostrar a publishers.</p></div></div>
+</div></div></section>
+
+<div class="sep" aria-hidden="true"><span>キ</span><span>ウ</span><span>イ</span></div>
+
+<section id="contato"><div class="wrap">
+<span class="eyebrow">Vamos conversar</span><h2>Bora criar algo <span class="grad">suculento?</span></h2>
+<p class="lead">Publisher, estúdio parceiro, imprensa ou jogador: manda um recado pra gente.</p>
+<form id="f" novalidate>
+<input id="n" placeholder="Seu nome" required>
+<input id="e" type="email" placeholder="Seu e-mail" required>
+<select><option>Parceria com publisher</option><option>Co-desenvolvimento</option><option>Imprensa</option><option>Só um oi</option></select>
+<textarea id="m" rows="4" placeholder="Sua mensagem" required></textarea>
+<button class="btn" type="submit">Enviar mensagem</button><div id="msg" role="status"></div>
+</form></div></section>
+</main>
+
+<footer><div class="wrap"><a href="#hero" class="logo"><svg><use href="#mark"/></svg>Team Tomuri</a><span>© 2026 Team Tomuri · Brasil · キウイ</span><span>contato@seudominio.com</span></div></footer>
+
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+$('#burger').onclick=function(){$('#links').classList.toggle('open')};
+document.querySelectorAll('#links a').forEach(function(a){a.onclick=function(){$('#links').classList.remove('open')}});
+var root=document.documentElement;
+$('#tt').onclick=function(){var d=matchMedia('(prefers-color-scheme: dark)').matches;var cur=root.dataset.theme||(d?'dark':'light');root.dataset.theme=cur==='dark'?'light':'dark'};
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+var tabs={'Mecânica':'Descreva a mecânica principal do jogo e o que o jogador faz a maior parte do tempo.','Mundo':'Apresente o cenário: onde o kiwi vive, quem são os personagens e o clima da história.','Arte':'Fale do estilo visual e das referências, do ukiyo-e ao pixel art tropical.','Plataformas':'Liste onde o jogo será lançado e as datas previstas.'};
+var tb=$('#tabs');
+Object.keys(tabs).forEach(function(k,i){var b=document.createElement('button');b.textContent=k;b.onclick=function(){tb.querySelectorAll('button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');$('#tabtxt').textContent=tabs[k]};tb.appendChild(b);if(!i)b.click()});
+$('#f').onsubmit=function(ev){ev.preventDefault();var ok=$('#n').value.trim()&&/\S+@\S+\.\S+/.test($('#e').value)&&$('#m').value.trim();$('#msg').textContent=ok?'Mensagem enviada! (conecte um back-end para envio real)':'Preencha nome, e-mail válido e mensagem.';if(ok)this.reset()};
+// pétalas de sakura
+var c=$('#cv'),x=c.getContext('2d'),ps=[],W,H;
+function rs(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight}
+rs();addEventListener('resize',rs);
+for(var i=0;i<34;i++)ps.push({x:Math.random(),y:Math.random(),s:Math.random()*6+5,v:Math.random()*.0007+.0002,p:Math.random()*6,r:Math.random()*6});
+function draw(t){x.clearRect(0,0,W,H);ps.forEach(function(p){p.y+=p.v;p.x+=Math.sin(t/1200+p.p)*.0006;p.r+=.01;if(p.y>1.05){p.y=-.05;p.x=Math.random()}
+x.save();x.translate(p.x*W,p.y*H);x.rotate(p.r);x.globalAlpha=.7;x.fillStyle='#ff9dbd';x.beginPath();x.ellipse(0,0,p.s,p.s*.55,0,0,7);x.fill();x.restore()});
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)requestAnimationFrame(draw)}
+requestAnimationFrame(draw);
+})();
+</script>
+</body>
 </html>
